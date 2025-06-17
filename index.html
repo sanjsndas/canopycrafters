@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>CanopyCrafters - Sculpting Shade with Precision</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter&family=Material+Icons" rel="stylesheet" />
+<style>
+  /* Reset and base */
+  *, *::before, *::after {
+    box-sizing: border-box;
+  }
+  body {
+    margin: 0;
+    font-family: 'Inter', sans-serif;
+    background: #0b2e0b; /* Very deep green background */
+    color: #d8e8d8;
+    line-height: 1.6;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+  a {
+    color: #a1c88a;
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+  a:hover, a:focus {
+    color: #ffd369;
+    outline: none;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    font-weight: 700;
+    color: #f0f7f0;
+    margin-top: 0;
+  }
+  h1 {
+    font-size: 3.2rem;
+    line-height: 1.1;
+  }
+  h2 {
+    font-size: 2.4rem;
+    margin-bottom: 1rem;
+  }
+  h3 {
+    font-size: 1.8rem;
+    margin-bottom: 0.3rem;
+  }
+  p {
+    font-size: 1rem;
+    max-width: 900px;
+    margin-bottom: 1rem;
+    color: #c8d6c8;
+  }
+  main {
+    flex: 1 0 auto;
+    max-width: 1200px;
+    width: 90%;
+    margin: 0 auto 3rem;
+    padding: 1rem 0;
+  }
+
+  /* Header */
+  header {
+    background: linear-gradient(90deg, #123912, #1e4a1e);
+    padding: 1rem 2rem;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.75);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .logo {
+    font-size: 1.8rem;
+    font-weight: 900;
+    letter-spacing: 2px;
+    color: #a1c88a;
+    user-select: none;
+  }
+  nav {
+    display: flex;
+    gap: 1.8rem;
+    align-items: center;
+  }
+  nav a {
+    font-weight: 600;
+    font-size: 1.1rem;
+    padding: 0.3rem 0.6rem;
+    border-radius: 6px;
+  }
+  nav a:hover, nav a:focus {
+    background-color: #4f6f2a;
+    color: #ffd369;
+  }
+
+  /* Hero */
+  .hero {
+    text-align: center;
+    padding: 4rem 1rem 6rem;
+    background: linear-gradient(135deg, rgba(15,43,15,0.9), rgba(0,0,0,0)), url('https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/d265b4cd-7ebf-406c-99e8-3d8594d2ea15.png');
+    background-size: cover;
+    background-position: center;
+    border-radius: 16px;
+    margin-bottom: 5rem;
+    box-shadow: 0 12px 28px rgba(0,0,0,0.8);
+  }
+  .hero h1 {
+    margin-bottom: 1rem;
+    color: #e0eede;
+    font-size: 3.8rem;
+    text-shadow: 0 0 10px #a3c98e;
+  }
+  .hero p {
+    font-size: 1.4rem;
+    max-width: 700px;
+    margin: 0 auto 2rem;
+    color: #c7dab3;
+    font-weight: 600;
+    font-style: italic;
+    text-shadow: 0 0 5px #395867;
+  }
+  .btn-primary {
+    background: linear-gradient(90deg, #9aba66, #475c24);
+    border: none;
+    color: #f0f7f0;
+    padding: 1rem 3rem;
+    border-radius: 40px;
+    font-weight: 700;
+    font-size: 1.2rem;
+    cursor: pointer;
+    box-shadow: 0 4px 14px rgba(167, 179, 75, 0.7);
+    transition: background 0.4s ease, transform 0.3s ease;
+    user-select: none;
+  }
+  .btn-primary:hover, .btn-primary:focus {
+    background: linear-gradient(90deg, #c1d481, #667c31);
+    box-shadow: 0 6px 18px rgba(198, 210, 107, 0.95);
+    transform: scale(1.05);
+  }
+
+  /* Sections common */
+  section {
+    margin-bottom: 4rem;
+  }
+  .section-header {
+    text-align: center;
+    margin-bottom: 3rem;
+  }
+  .section-header h2 {
+    position: relative;
+    display: inline-block;
+    padding-bottom: 0.6rem;
+  }
+  .section-header h2::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 30%;
+    width: 40%;
+    height: 3px;
+    background: linear-gradient(90deg, #a3cc8e, #506b26);
+    border-radius: 2px;
+  }
+
+  /* Cards container */
+  .cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(280px,1fr));
+    gap: 2rem;
+  }
+
+  /* Card style */
+  .card {
+    background: rgba(24, 74, 24, 0.8);
+    border-radius: 22px;
+    padding: 2rem 2.2rem 3rem;
+    box-shadow: 0 8px 24px rgba(29, 105, 29, 0.8);
+    border: 1.8px solid #a2bb72;
+    display: flex;
+    flex-direction: column;
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+  }
+  .card:hover, .card:focus-within {
+    box-shadow: 0 12px 40px #cbe4a4;
+    transform: translateY(-6px);
+  }
+  .card h3 {
+    margin-top: 0;
+    margin-bottom: 0.3rem;
+    letter-spacing: 1px;
+    font-weight: 800;
+    color: #cce6b4;
+    text-shadow: 0 0 5px #5b7b32;
+  }
+  .card p {
+    flex-grow: 1;
+    font-size: 1rem;
+    line-height: 1.4;
+    color: #d0d7bf;
+    margin-bottom: 1rem;
+  }
+  .card img {
+    max-width: 100%;
+    border-radius: 14px;
+    margin-bottom: 1.5rem;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    box-shadow: 0 6px 16px rgba(18, 55, 18, 0.8);
+  }
+  /* Price */
+
+  .service-price {
+    font-weight: 700;
+    font-size: 1.1rem;
+    color: #a9c873;
+    text-shadow: 0 0 4px #819f4a;
+    margin-top: -0.5rem;
+  }
+
+  /* Tips list */
+  .tips-list {
+    list-style-type: disc;
+    padding-left: 1.5rem;
+    max-width: 700px;
+    margin: 0 auto;
+    color: #c5d4b5;
+  }
+  .tips-list li {
+    margin-bottom: 0.8rem;
+    font-weight: 600;
+    text-shadow: 0 0 3px rgba(128,160,100, 0.8);
+  }
+
+  /* Feedback cards */
+  .feedback-container {
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+  .feedback-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(320px,1fr));
+    gap: 2rem;
+  }
+  .feedback-card {
+    background: rgba(21, 52, 21, 0.75);
+    border-radius: 18px;
+    border: 1.4px solid #77a873;
+    padding: 1.8rem 2.2rem;
+    box-shadow: 0 6px 18px rgba(35, 81, 35, 0.75);
+    font-style: italic;
+    color: #d5e0cc;
+    position: relative;
+  }
+  .feedback-card::before {
+    font-family: 'Material Icons';
+    content: "format_quote";
+    font-size: 3.6rem;
+    color: #a6bca7;
+    position: absolute;
+    top: 10px;
+    left: 16px;
+    opacity: 0.15;
+  }
+  .feedback-author {
+    margin-top: 1rem;
+    font-weight: 700;
+    text-align: right;
+    color: #d9f0bd;
+  }
+
+  /* Feedback form */
+  form.feedback-form {
+    margin-top: 2.5rem;
+    background: rgba(24, 74, 24, 0.85);
+    padding: 2rem 2.5rem;
+    border-radius: 20px;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    border: 1.8px solid #9eb872;
+  }
+  form.feedback-form label {
+    font-weight: 600;
+    color: #c7d9b2;
+    display: block;
+    margin-bottom: 0.5rem;
+  }
+  form.feedback-form input,
+  form.feedback-form textarea {
+    width: 100%;
+    padding: 0.8rem 1rem;
+    border-radius: 12px;
+    border: none;
+    margin-bottom: 1.4rem;
+    font-size: 1rem;
+    font-family: inherit;
+    resize: vertical;
+    background: #233623;
+    color: #e1f3c8;
+    box-shadow: inset 0 0 8px #4f7a2f;
+  }
+  form.feedback-form button {
+    background: linear-gradient(90deg, #8cb84b, #43691e);
+    border: none;
+    color: #f0f8e0;
+    font-weight: 700;
+    padding: 1rem 2.5rem;
+    font-size: 1.15rem;
+    border-radius: 40px;
+    cursor: pointer;
+    box-shadow: 0 4px 14px rgba(149, 198, 88, 0.8);
+    transition: background 0.3s ease;
+  }
+  form.feedback-form button:hover, form.feedback-form button:focus {
+    background: linear-gradient(90deg, #aacb6a, #337303);
+  }
+
+  /* Disclaimer */
+  .disclaimer {
+    font-size: 0.85rem;
+    max-width: 900px;
+    margin: 3rem auto 0;
+    padding: 1.5rem 1rem;
+    color: #a3b288;
+    background: rgba(19, 47, 19, 0.5);
+    border-radius: 12px;
+    border: 1px solid #557933;
+    line-height: 1.4;
+  }
+
+  /* Footer */
+  footer {
+    background: linear-gradient(90deg, #112811, #325b1a);
+    color: #b7d28e;
+    text-align: center;
+    padding: 2rem 1rem 4rem;
+    font-weight: 600;
+    font-size: 1.1rem;
+    user-select: none;
+    flex-shrink: 0;
+  }
+  footer address {
+    font-style: normal;
+    margin-top: 0.5rem;
+    font-weight: 700;
+  }
+
+  /* Customer satisfaction callout */
+  .customer-satisfaction {
+    margin-top: 3rem;
+    background: linear-gradient(135deg, #617535, #a1cc7f);
+    color: #153906;
+    padding: 1rem 1.5rem;
+    border-radius: 16px;
+    font-size: 1.4rem;
+    font-weight: 900;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    box-shadow: 0 4px 14px rgba(140, 183, 86, 0.8);
+    text-align: center;
+    user-select: none;
+  }
+
+  /* Responsive Images in text */
+  figure {
+    margin: 2rem 0;
+    text-align: center;
+  }
+  figure img {
+    width: 100%;
+    max-width: 560px;
+    border-radius: 16px;
+    box-shadow: 0 6px 18px rgba(0,52,0,0.7);
+  }
+  figure figcaption {
+    margin-top: 0.6rem;
+    font-size: 0.9rem;
+    color: #9bb98a;
+    font-style: italic;
+  }
+
+  /* Media Queries */
+  @media (max-width: 900px) {
+    .cards {
+      grid-template-columns: 1fr;
+    }
+  }
+  @media (max-width: 500px) {
+    header {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 1rem;
+    }
+    nav {
+      gap: 1rem;
+      width: 100%;
+      justify-content: flex-start;
+      flex-wrap: wrap;
+    }
+    .hero h1 {
+      font-size: 2rem;
+    }
+    .hero p {
+      font-size: 1rem;
+    }
+  }
+</style>
+</head>
+<body>
+<header role="banner">
+  <div class="logo" aria-label="CanopyCrafters Logo" tabindex="0">CanopyCrafters</div>
+  <nav role="navigation" aria-label="Primary Navigation">
+   <a href="index.html" tabindex="0"aria-current="page">Home</a>
+        <a href="privacy.html" tabindex="0">Privacy</a>
+        <a href="terms.html" tabindex="0">Terms & conditons</a>
+        <a href="cookies.html"tabindex="0">Cookies</a>
+        <a href="contact.html" tabindex="0">Contact us</a>
+  </nav>
+</header>
+
+<main>
+  <section class="hero" aria-label="Hero Section with slogan and banner image">
+    <h1>CanopyCrafters</h1>
+    <p>“Sculpting shade with precision.”</p>
+    <button class="btn-primary" onclick="document.getElementById('contact-form').scrollIntoView({behavior:'smooth'});">Get in Touch</button>
+  </section>
+
+  <section id="about-us" aria-labelledby="about-us-title">
+    <header class="section-header">
+      <h2 id="about-us-title">About Us</h2>
+    </header>
+    <figure>
+      <img src="p1.png" alt="Our skilled team carefully shaping a large tree" loading="lazy" />
+      <figcaption>Expert team at work sculpting tree canopies</figcaption>
+    </figure>
+    <p>CanopyCrafters is a premium tree care company specializing in expert canopy pruning, shaping, and advanced arboricultural services, dedicated to enhancing the natural beauty and health of your trees.</p>
+    <p>With over two decades of experience, our passionate arborists combine artistic precision with scientific knowledge to deliver exceptional services ensuring your green spaces thrive and captivating shade canopies endure.</p>
+    <p>At CanopyCrafters, sustainability, and environmental responsibility guide every decision. We curate custom pruning plans and apply modern, safe techniques to maintain tree vitality, longevity, and aesthetics.</p>
+    <p>Our team constantly evolves through continued education and innovation, offering unmatched customer service, reliability, and unparalleled attention to detail. Your trust empowers us to sculpt nature's shade masterpieces.</p>
+    <p>
+      We believe every tree is a living artwork deserving the finest craftsmanship. Our commitment extends beyond pruning to include full health assessments, planting guidance, and long-term care strategies.
+    </p>
+    <!-- simulate more content to create large text -->
+    <p>Our detailed reports, follow-up consultations, and emergency tree services elevate our customer satisfaction to industry-leading levels. CanopyCrafters understands the nuances of local ecosystems, allowing us to tailor solutions for urban and rural properties alike.</p>
+    <p>From grand estates to community parks, we transform landscapes with skillful tree shaping, balancing form and function – preventing disease, enhancing growth, and creating vibrant, breathable canopies that enrich your environment.</p>
+
+    <figure>
+      <img src="p2.png" alt="Arborists carefully pruning large tree branches under bright sunlight" loading="lazy" />
+      <figcaption>Precision pruning to promote tree health and canopy design</figcaption>
+    </figure>
+
+    <p>We constantly refine our pruning techniques, staying abreast of newest arboriculture standards — from crown thinning to canopy restoration — ensuring every cut fosters growth and resilience in your trees.</p>
+    <p>The CanopyCrafters difference is seen in the vitality of our work — healthier trees, stunning silhouettes, safer surroundings, and happy customers who value longevity and visual appeal equally.</p>
+    <p>Tree shaping is both an art and a science; our specialists wield state-of-the-art tools to sculpt and nurture, breathing life and beauty into each project with a gentle hand and strategic vision.</p>
+    <p>As eco-conscious stewards, we uphold strict safety and environmental protocols, preserving biodiversity and native flora on every site we serve, making us leaders in sustainable canopy care.</p>
+    <p>Contact us for consultations or emergency services — experience the trust and expertise that thousands of satisfied customers have enjoyed, as we sculpt the shade of tomorrow with precision and care.</p>
+  </section>
+
+  <section id="services" aria-labelledby="services-title">
+    <header class="section-header">
+      <h2 id="services-title">Our Services</h2>
+    </header>
+    <div class="cards" role="list">
+      <article class="card" role="listitem" tabindex="0">
+        <img src="s1.png" alt="Closeup of canopy pruning with professional tools on a tall oak tree" loading="lazy" />
+        <h3>Canopy Pruning</h3>
+        <div class="service-price">Starting from $250</div>
+        <p>Expert canopy pruning tailored to enhance the natural shape of your trees, improving sunlight penetration and air circulation, promoting healthy growth, and preventing disease.</p>
+      </article>
+      <article class="card" role="listitem" tabindex="0">
+        <img src="s2.png" alt="Elegant shaped tree canopy in a landscaped garden during golden hour" loading="lazy" />
+        <h3>Tree Shaping & Sculpting</h3>
+        <div class="service-price">Starting from $350</div>
+        <p>Artistic tree shaping services that sculpt living shades with precision. Our team shapes and designs canopies to transform your landscape into a majestic and serene environment.</p>
+      </article>
+      <article class="card" role="listitem" tabindex="0">
+        <img src="s3.png" alt="Arborist assessing health of a large mature tree" loading="lazy" />
+        <h3>Tree Health Assessment</h3>
+        <div class="service-price">Starting from $150</div>
+        <p>Comprehensive health evaluations by certified arborists including pest inspection, disease diagnostics, root examination, and detailed health reporting for optimal care plans.</p>
+      </article>
+      <article class="card" role="listitem" tabindex="0">
+        <img src="s4.png" alt="Tree removal using crane in residential area after storm damage" loading="lazy" />
+        <h3>Emergency Tree Services</h3>
+        <div class="service-price">Starting from $400</div>
+        <p>Rapid response teams handling storm damage, hazardous branches, and urgent pruning/removal to safeguard your property and loved ones with minimum disruption.</p>
+      </article>
+      <article class="card" role="listitem" tabindex="0">
+        <img src="s5.png" alt="Seasonal tree pruning preparations in large park" loading="lazy" />
+        <h3>Seasonal Care & Maintenance</h3>
+        <div class="service-price">Starting from $200</div>
+        <p>Scheduled pruning and tree maintenance tailored to seasonal cycles to support growth phases, flower/fruit production, and minimize tree stress.</p>
+      </article>
+      <article class="card" role="listitem" tabindex="0">
+        <img src="s6.png" loading="lazy" alt="Regrowth and restoration of tree canopy after pruning" />
+        <h3>Canopy Restoration</h3>
+        <div class="service-price">Starting from $300</div>
+        <p>Restoration and rejuvenation of damaged or neglected canopies using advanced pruning and nurturing techniques to bring back vitality and protective shade.</p>
+      </article>
+    </div>
+  </section>
+
+  <section id="tips" aria-labelledby="tips-title">
+    <header class="section-header">
+      <h2 id="tips-title">Expert Tips & Advice</h2>
+    </header>
+    <ul class="tips-list">
+      <li>Always prune trees during dormant seasons to minimize stress and promote healthy growth.</li>
+      <li>Remove dead or diseased branches immediately to prevent spread of pests and illness.</li>
+      <li>Regularly inspect your trees for signs of pests, fungus, or nutrient deficiencies.</li>
+      <li>Use clean, sharp tools for all pruning to make clean cuts that heal faster.</li>
+      <li>Avoid excessive pruning which can weaken branches and increase vulnerability.</li>
+      <li>Mulch around the base of trees to retain moisture and regulate soil temperature.</li>
+      <li>Avoid piling soil or mulch against the trunk which can cause rot.</li>
+      <li>Water deeply and infrequently to encourage strong root systems.</li>
+      <li>Consult professionals for large pruning jobs to ensure safety and precision.</li>
+      <li>Protect trees from mechanical damage by installing guards or barriers as needed.</li>
+    </ul>
+  </section>
+
+  <section id="feedback" aria-labelledby="feedback-title">
+    <header class="section-header">
+      <h2 id="feedback-title">Customer Feedback</h2>
+    </header>
+    <div class="feedback-container">
+      <div class="feedback-cards">
+        <blockquote class="feedback-card" tabindex="0">
+          <p>CanopyCrafters transformed our backyard with their expert pruning. The trees look healthier and more beautiful than ever. Highly recommend their professional services.</p>
+          <footer class="feedback-author">— Jessica M., Manhattan</footer>
+        </blockquote>
+        <blockquote class="feedback-card" tabindex="0">
+          <p>Outstanding craftsmanship and attention to detail! The arborists were knowledgeable, courteous, and efficient. Our tree shaping project exceeded expectations.</p>
+          <footer class="feedback-author">— Lawrence G., Brooklyn</footer>
+        </blockquote>
+        <blockquote class="feedback-card" tabindex="0">
+          <p>Reliable and trustworthy service from CanopyCrafters. Their emergency tree removal saved our house after the storm. True professionals with great care and speed.</p>
+          <footer class="feedback-author">— Samantha K., Queens</footer>
+        </blockquote>
+        <blockquote class="feedback-card" tabindex="0">
+          <p>Very satisfied with the seasonal care plan. Our trees remain vibrant and well-maintained year-round thanks to CanopyCrafters’ proactive approach and expertise.</p>
+          <footer class="feedback-author">— Ethan R., Bronx</footer>
+        </blockquote>
+      </div>
+      <form id="contact-form" class="feedback-form" aria-label="Customer feedback form" onsubmit="return false;">
+        <label for="name">Your Name</label>
+        <input type="text" id="name" name="name" placeholder="Enter your name" required aria-required="true" />
+        <label for="email">Email Address</label>
+        <input type="email" id="email" name="email" placeholder="Enter your email" required aria-required="true" />
+        <label for="message">Your Feedback</label>
+        <textarea id="message" name="message" rows="4" placeholder="Share your experience or questions" required aria-required="true"></textarea>
+        <button type="submit" onclick="alert('Thank you for your feedback! We will get back to you shortly.'); this.closest('form').reset();">Submit Feedback</button>
+      </form>
+    </div>
+  </section>
+
+  <section id="disclaimer" aria-labelledby="disclaimer-title">
+    <header class="section-header">
+      <h2 id="disclaimer-title">Disclaimer</h2>
+    </header>
+    <p class="disclaimer">
+      The information provided by CanopyCrafters is for general informational purposes only. All services and suggestions are subject to conditions and variations depending on individual tree species, environment, and local regulations. No warranty or guarantee is expressed or implied regarding outcomes or results. Always consult certified arborists before undertaking any significant tree care or pruning activities. CanopyCrafters disclaims any liability for damages or injuries incurred from following advice or utilizing services.
+    </p>
+  </section>
+
+  <div class="customer-satisfaction" aria-live="polite" role="status" tabindex="0">
+    Increase Content Customer Satisfaction: At CanopyCrafters, we consistently deliver exceptional quality, reliability, and artistry to ensure every client enjoys the healthiest and most sculpted shade that elevates their property’s natural beauty.
+  </div>
+</main>
+
+<footer role="contentinfo">
+  Contact us at: <address>140 E 14th St, New York, NY 10003, USA</address>
+</footer>
+
+</body>
+</html>
+

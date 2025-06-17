@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>CanopyCrafters - Contact Us</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter&family=Material+Icons" rel="stylesheet" />
+<style>
+  /* Reset and base */
+  *, *::before, *::after {
+    box-sizing: border-box;
+  }
+  body {
+    margin: 0;
+    font-family: 'Inter', sans-serif;
+    background: #0b2e0b;
+    color: #d8d8d8;
+    line-height: 1.6;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+  a {
+    color: #a1c88a;
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+  a:hover, a:focus {
+    color: #ffd369;
+    outline: none;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    font-weight: 700;
+    color: #f0f7f0;
+    margin-top: 0;
+  }
+  h1 {
+    font-size: 3.2rem;
+    line-height: 1.1;
+  }
+  h2 {
+    font-size: 2.4rem;
+    margin-bottom: 1rem;
+  }
+  h3 {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+  }
+  p {
+    font-size: 1rem;
+    max-width: 900px;
+    margin-bottom: 1rem;
+    color: #c8d8c8;
+  }
+  main {
+    flex: 1 0 auto;
+    max-width: 900px;
+    width: 90%;
+    margin: 2rem auto 3rem;
+    padding: 1rem 2rem;
+    background: rgba(15,43,15,0.9);
+    border-radius: 18px;
+    box-shadow: 0 8px 24px rgba(29, 105, 29, 0.9);
+  }
+  /* Header */
+  header {
+    background: linear-gradient(90deg, #123912, #1e4a1e);
+    padding: 1rem 2rem;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.75);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 2rem;
+  }
+  .logo {
+    font-size: 1.8rem;
+    font-weight: 900;
+    letter-spacing: 2px;
+    color: #a1c88a;
+    user-select: none;
+  }
+  nav {
+    display: flex;
+    gap: 1.8rem;
+    align-items: center;
+  }
+  nav a {
+    font-weight: 600;
+    font-size: 1.1rem;
+    padding: 0.3rem 0.6rem;
+    border-radius: 6px;
+  }
+  nav a:hover, nav a:focus {
+    background-color: #4f6f2a;
+    color: #ffd369;
+  }
+  /* Sections */
+  section {
+    margin-bottom: 3rem;
+  }
+  .section-header {
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+  .section-header h2 {
+    position: relative;
+    display: inline-block;
+    padding-bottom: 0.5rem;
+  }
+  .section-header h2::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 30%;
+    width: 40%;
+    height: 3px;
+    background: linear-gradient(90deg, #a3cc8e, #506b26);
+    border-radius: 2px;
+  }
+  /* Contact form */
+  form.contact-form {
+    max-width: 700px;
+    margin: 0 auto;
+    background: rgba(24, 74, 24, 0.85);
+    padding: 2rem 2.5rem;
+    border-radius: 20px;
+    border: 1.8px solid #9eb872;
+    box-shadow: 0 6px 18px rgba(35, 81, 35, 0.75);
+  }
+  form.contact-form label {
+    font-weight: 600;
+    color: #c7d9b2;
+    display: block;
+    margin-bottom: 0.5rem;
+  }
+  form.contact-form input,
+  form.contact-form textarea {
+    width: 100%;
+    padding: 0.8rem 1rem;
+    border-radius: 12px;
+    border: none;
+    margin-bottom: 1.4rem;
+    font-size: 1rem;
+    font-family: inherit;
+    resize: vertical;
+    background: #233623;
+    color: #e1f3c8;
+    box-shadow: inset 0 0 8px #4f7a2f;
+  }
+  form.contact-form button {
+    background: linear-gradient(90deg, #8cb84b, #43691e);
+    border: none;
+    color: #f0f8e0;
+    font-weight: 700;
+    padding: 1rem 2.5rem;
+    font-size: 1.15rem;
+    border-radius: 40px;
+    cursor: pointer;
+    box-shadow: 0 4px 14px rgba(149, 198, 88, 0.8);
+    transition: background 0.3s ease;
+  }
+  form.contact-form button:hover, form.contact-form button:focus {
+    background: linear-gradient(90deg, #aacb6a, #337303);
+  }
+  /* Detailed text */
+  .detailed-text {
+    max-width: 900px;
+    margin: 0 auto 2rem;
+    color: #c5d8c8;
+    text-align: justify;
+  }
+  /* Footer */
+  footer {
+    background: linear-gradient(90deg, #112811, #325b1a);
+    color: #b7d28e;
+    text-align: center;
+    padding: 2rem 1rem 4rem;
+    font-weight: 600;
+    font-size: 1.1rem;
+    user-select: none;
+    flex-shrink: 0;
+  }
+  footer address {
+    font-style: normal;
+    font-weight: 700;
+    display: block;
+    margin-top: 0.5rem;
+  }
+  /* Responsive */
+  @media (max-width: 640px){
+    main {
+      width: 95%;
+      margin: 1rem auto 2rem;
+      padding: 1rem;
+    }
+    nav {
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+  }
+</style>
+</head>
+<body>
+<header role="banner">
+  <div class="logo" aria-label="CanopyCrafters Logo" tabindex="0">CanopyCrafters</div>
+  <nav role="navigation" aria-label="Primary Navigation">
+   <a href="index.html" tabindex="0">Home</a>
+        <a href="privacy.html" tabindex="0">Privacy</a>
+        <a href="terms.html" tabindex="0">Terms & conditons</a>
+        <a href="cookies.html"tabindex="0">Cookies</a>
+        <a href="contact.html" tabindex="0"aria-current="page">Contact us</a>
+  </nav>
+</header>
+
+<main>
+  <section aria-labelledby="contact-title">
+    <header class="section-header">
+      <h2 id="contact-title">Contact Us</h2>
+    </header>
+
+    <p class="detailed-text">
+      We at CanopyCrafters value every opportunity to connect with our clients, partners, and community. Whether you have questions about our premium tree care services, wish to schedule an appointment, or need expert advice on canopy pruning and shaping, our team is ready to assist you with personalized attention and professional expertise.
+    </p>
+    <p class="detailed-text">
+      Our dedicated customer service representatives and arborists are committed to providing clear, comprehensive guidance to help your trees thrive and your property flourish. Reach out to us via the form below, phone, email, or visit our local office to experience CanopyCrafters’ hallmark of excellence.
+    </p>
+
+    <form class="contact-form" aria-label="Contact form" onsubmit="event.preventDefault(); alert('Thank you for contacting CanopyCrafters! We will respond to your message promptly.'); this.reset();">
+      <label for="name">Full Name</label>
+      <input type="text" id="name" name="name" placeholder="Your full name" required aria-required="true" />
+
+      <label for="email">Email Address</label>
+      <input type="email" id="email" name="email" placeholder="example@domain.com" required aria-required="true" />
+
+      <label for="phone">Phone Number</label>
+      <input type="tel" id="phone" name="phone" placeholder="+1 (555) 555-1234" aria-required="false" />
+
+      <label for="subject">Subject</label>
+      <input type="text" id="subject" name="subject" placeholder="Subject of your message" required aria-required="true" />
+
+      <label for="message">Message</label>
+      <textarea id="message" name="message" rows="8" placeholder="Write your message here..." required aria-required="true"></textarea>
+
+      <button type="submit">Send Message</button>
+    </form>
+
+    <h3>How to Reach Us</h3>
+    <p class="detailed-text">
+      CanopyCrafters welcomes walk-in consultations and scheduled visits to our offices located conveniently in the heart of New York City. Please use the following contact information to get in touch or to find us:
+    </p>
+    <ul>
+      <li><strong>Address:</strong> 140 E 14th St, New York, NY 10003, USA</li>
+      <li><strong>Phone:</strong> +1 (855) 711-9888</li>
+      <li><strong>Email:</strong> contact@canopycrafters.com</li>
+      <li><strong>Business Hours:</strong> Monday – Friday: 8:00 AM – 6:00 PM, Saturday: 9:00 AM – 2:00 PM</li>
+    </ul>
+
+    <h3>Customer Support Hours and Availability</h3>
+    <p class="detailed-text">
+      Our customer support team is available Monday through Friday from 8 AM to 6 PM, with limited hours on Saturdays from 9 AM to 2 PM. We strive to respond to all inquiries within 24 hours during business days.
+      For urgent requests or emergency tree care, we offer a dedicated hotline available 24/7. When contacting for emergencies, please provide clear details to expedite assistance.
+    </p>
+
+    <h3>Contact Methods</h3>
+    <ul>
+      <li><strong>Phone Support:</strong> Speak directly with our knowledgeable representatives for immediate assistance.</li>
+      <li><strong>Email Support:</strong> For detailed inquiries and documentation, email us at contact@canopycrafters.com.</li>
+      <li><strong>Online Chat:</strong> Our website features a live chat during business hours to provide quick answers and direct you to the right resources.</li>
+      <li><strong>Social Media:</strong> Connect with us on Facebook, Twitter, and Instagram for updates, promotions, and community engagement.</li>
+    </ul>
+
+    <h3>Frequently Asked Questions (FAQ)</h3>
+    <p class="detailed-text">
+      Our FAQ section addresses typical questions about scheduling, services, pricing, and tree care advice. Visit the FAQ on our website for comprehensive answers to common queries.
+    </p>
+
+    <h3>Feedback and Complaints</h3>
+    <p class="detailed-text">
+      Your feedback is invaluable to us. If you experience any dissatisfaction or issues with our services, please contact our customer relations manager directly at feedback@canopycrafters.com or call +1 (212) 555-0155. We are committed to resolving concerns promptly and professionally.
+    </p>
+
+    <h3>Locations and Service Areas</h3>
+    <p class="detailed-text">
+      While our main office is in New York City, CanopyCrafters also services the greater metropolitan area and surrounding counties. For large projects or commercial contracts outside our typical service radius, please inquire about possible arrangements.
+    </p>
+
+    <h3>Request a Quote</h3>
+    <p class="detailed-text">
+      Looking for an estimate? Provide us with details about your property, tree care needs, and timeframe via our contact form or by phone. Our experts will provide a detailed, no-obligation quote tailored to your project requirements.
+    </p>
+
+    <h3>Careers and Partnership Opportunities</h3>
+    <p class="detailed-text">
+      Interested in joining the CanopyCrafters team or partnering with us? Contact our HR department at careers@canopycrafters.com for job openings or partnerships@canopycrafters.com for business proposals. We welcome qualified arborists, technicians, and business associates to collaborate with us.
+    </p>
+
+    <h3>Newsletter Subscription</h3>
+    <p class="detailed-text">
+      Stay informed about seasonal tips, service updates, and special promotions by subscribing to our monthly newsletter. Sign-up is available on our website homepage and all communications respect your privacy and preferences.
+    </p>
+
+    <h3>Privacy and Data Protection Contact</h3>
+    <p class="detailed-text">
+      For questions related to your personal data, privacy policies, or rights under data protection laws, reach out to our Data Protection Officer at privacy@canopycrafters.com or by calling +1 (212) 555-0160.
+    </p>
+
+    <h3>Emergency Contact Information</h3>
+    <p class="detailed-text">
+      In case of storm damage or urgent tree hazards, use our emergency hotline available 24/7 at +1 (212) 555-0180. Rapid response teams are ready to assist with safety and mitigation to protect your property and loved ones.
+    </p>
+
+    <h3>Feedback Form</h3>
+    <form class="contact-form" aria-label="Feedback form" onsubmit="event.preventDefault(); alert('Thank you for your feedback! We appreciate your input and will respond if necessary.'); this.reset();">
+      <label for="feedback-name">Name</label>
+      <input type="text" id="feedback-name" name="feedback-name" placeholder="Your name" required />
+
+      <label for="feedback-email">Email</label>
+      <input type="email" id="feedback-email" name="feedback-email" placeholder="Your email" required />
+
+      <label for="feedback-message">Message</label>
+      <textarea id="feedback-message" name="feedback-message" rows="6" placeholder="Your message" required></textarea>
+
+      <button type="submit">Submit Feedback</button>
+    </form>
+
+    <h3>Additional Contact Topics</h3>
+    <h4>Scheduling a Service Appointment</h4>
+    <p class="detailed-text">
+      Scheduling your tree care service is simple. Contact our office via phone or email to select a convenient date and time. Our scheduling team will coordinate with our arborists to ensure timely delivery of services.
+      We recommend booking at least two weeks in advance for standard pruning and shaping services, and as soon as possible for seasonal maintenance to guarantee availability.
+    </p>
+
+    <h4>Requesting a Consultation</h4>
+    <p class="detailed-text">
+      For personalized consultations, we offer both in-person and virtual options. Our consultants will assess your property’s needs, provide expert recommendations, and discuss tailored service plans. Consultations help determine tree health, optimal pruning strategies, and long-term care.
+    </p>
+
+    <h4>Billing and Payment Support</h4>
+    <p class="detailed-text">
+      Questions regarding billing, invoices, and payment methods can be directed to our accounts department via billing@canopycrafters.com or by phone at +1 (212) 555-0150.
+      We offer multiple payment options including credit card, bank transfer, and financing plans. Clarifications on charges, adjustments, or refunds are handled professionally.
+    </p>
+
+    <h4>Partnership Inquiries and Vendor Relations</h4>
+    <p class="detailed-text">
+      CanopyCrafters welcomes partnerships with landscapers, garden centers, and environmental organizations. Vendors interested in collaborating or supplying products may contact our procurement team at vendors@canopycrafters.com for opportunities.
+    </p>
+
+    <h4>Technical Support for Website and Online Tools</h4>
+    <p class="detailed-text">
+      For assistance with our website, account creation, or use of our online scheduling and payments portal, please contact techsupport@canopycrafters.com. Our IT support team can walk you through features or resolve access issues.
+    </p>
+
+    <h4>Community Engagement and Educational Events</h4>
+    <p class="detailed-text">
+      We regularly host tree care workshops, community planting days, and educational lectures. Those interested in participating or hosting such events can reach out to community@canopycrafters.com.
+      Join us in fostering a greener environment through knowledge and action.
+    </p>
+
+    <h4>General Inquiries</h4>
+    <p class="detailed-text">For any other questions not covered above, simply contact our main telephone line or use the contact form for a prompt response from the appropriate department. We value your interest and strive to provide comprehensive support.</p>
+  </section>
+</main>
+
+<footer role="contentinfo">
+  Contact us at: <address>140 E 14th St, New York, NY 10003, USA</address>
+  <div>Phone: +1 (855) 711-9888</div>
+</footer>
+
+</body>
+</html>
+
